@@ -59,8 +59,11 @@ exports.setLogLevel = (LEVEL) => {
 
 var bunyan = require('bunyan');
 var Bunyan2Loggly = require('bunyan-loggly');
-var conf = require('../crib.conf');
-var logglyStream = new Bunyan2Loggly(conf.log);
+
+var logglyStream = new Bunyan2Loggly({
+    token: process.env.CRIB_LOGGLY_TOKEN,
+    subdomain: process.env.CRIB_LOGGLY_DOMAIN
+});
 
 
 
