@@ -1,5 +1,4 @@
 // API used by the clients
-let Q = require('q');
 let buss = undefined;
 
 module.exports.TRACE = 1;
@@ -12,7 +11,6 @@ const trace = console.log;
 const debug = (function(){
     var timestamp = function(){};
     timestamp.toString = function(){
-        console.log('Tjoho');
         return "[DEBUG " + (new Date).toLocaleTimeString() + "]";
     };
 
@@ -76,6 +74,7 @@ module.exports.createLogger = (name, level) =>
                 level,
             },
             {
+                level,
                 type: 'raw',
                 stream: logglyStream
             }]
